@@ -1,0 +1,33 @@
+<div class="item">
+  <mat-card class="item-card">
+    <div class="item-card-image-container">
+      <img
+        mat-card-image
+        class="item-image"
+        src="{{ image }}"
+        alt=""
+      />
+    </div>
+    <mat-card-content class="item-card-content">
+      <div>
+        <h5>{{ title }}</h5>
+        <h2>{{ price | currency : "EUR" }}</h2>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        class="item-card-action-button"
+        mat-fab
+        extended
+        color="primary"
+      >
+        Add to cart
+        <mat-icon
+          aria-hidden="false"
+          aria-label="cart"
+          fontIcon="shopping_cart"
+        ></mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

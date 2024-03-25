@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="w-100 d-flex" *ngIf="isLoading; else showProducts">
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
+  <ng-template #showProducts>
+    <div class="products">
+      <app-product-card
+        *ngFor="let product of products"
+        [title]="product.title"
+        [price]="product.price"
+        [description]="product.description"
+        [image]="product.image"
+        [id]="product.id"
+      ></app-product-card>
+    </div>
+  </ng-template>
+</div>
