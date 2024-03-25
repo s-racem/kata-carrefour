@@ -1,0 +1,36 @@
+<div class="cart-item">
+  <div class="cart-item-image">
+    <img class="item-image" src="{{ image }}" alt="" />
+  </div>
+  <div class="cart-item-information">
+    <div class="cart-item-information-header">
+      <h3>{{ title }}</h3>
+      <button
+        mat-icon-button
+        class="example-icon favorite-icon"
+        aria-label="Example icon-button with heart icon"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="delete"
+          fontIcon="delete"
+          class="cart-item-information-header-icon"
+          (click)="delete()"
+        ></mat-icon>
+      </button>
+    </div>
+    <div class="cart-item-information-body">
+      <div class="cart-item-information-body-quantity">
+        <div class="cart-item-information-body-quantity-numberStepper">
+          <button class="cart-item-information-body-quantity-numberStepper-decrement" [disabled]="quantity === 0 ? true : false" (click)="reduce()"></button>
+          <div class="cart-item-information-body-quantity-numberStepper-quantity">{{quantity}}</div>
+          <button class="cart-item-information-body-quantity-numberStepper-increment" (click)="increase()"></button>
+        </div>
+      </div>
+      <div class="price">
+        {{ quantity * price | currency : "EUR" }}
+      </div>
+    </div>
+  </div>
+</div>
+<mat-divider class="divider"></mat-divider>

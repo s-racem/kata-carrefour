@@ -1,0 +1,20 @@
+@import "../../../../theme/_variables.scss";
+.container{
+  display: flex;
+  padding: $CONTAINER_PADDING;
+  gap: 24px;
+  .spinner{
+    margin: auto;
+  }
+  .products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container{
+    flex-direction: column;
+  }
+}
