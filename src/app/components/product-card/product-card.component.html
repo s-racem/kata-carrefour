@@ -1,12 +1,14 @@
 <div class="item">
   <mat-card class="item-card">
     <div class="item-card-image-container">
-      <img
-        mat-card-image
-        class="item-image"
-        src="{{ image }}"
-        alt=""
-      />
+      <a [routerLink]="['/products', title]">
+        <img
+          mat-card-image
+          class="item-image"
+          src="{{ image }}"
+          alt=""
+        />
+      </a>
     </div>
     <mat-card-content class="item-card-content">
       <div>
