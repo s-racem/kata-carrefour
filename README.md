@@ -1,5 +1,8 @@
 # KataCarrefour
-
+This application allows to fetch list of product from the fake store 'https://fakestoreapi.com/products' 
+You can filter or sort the list of products, you can also click on the image of the product to access to prodect details
+You can add a product on the cart and increase, reduce or remove a product from the cart
+you can open the full cart to get more detils
 # Architecture
 |-app<br />
 |&nbsp; &nbsp; &nbsp;|src<br />
