@@ -12,6 +12,7 @@
 |&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-product-description component<br />
 |&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-products component<br />
 |&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-layout (contains the list of layouts of the app)<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-filter component<br />
 |&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-top-bar component<br />
 |&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-models (contains the interfaces)<br />
 |&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-cartProduct model<br />
@@ -34,3 +35,5 @@
 feature 1: fetch and display the list of products<br />
 feature 2: add products to the shopping cart and view the cart<br />
 feature 3: display detailsof product<br />
+feature 4: add filter<br />
+feature 5: Implement some unit test<br />

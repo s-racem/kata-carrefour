@@ -4,6 +4,12 @@
   </div>
   <ng-template #showProducts>
     <div class="products">
+      <app-filter
+        (valueChanged)="filterByNameHandler($event)"
+        (optionChanged)="filterByOptionHandler($event)"
+        style="width: 100%"
+      ></app-filter>
+
       <app-product-card
         *ngFor="let product of products"
         [title]="product.title"
