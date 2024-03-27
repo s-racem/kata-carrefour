@@ -5,6 +5,8 @@ import {ActivatedRoute, convertToParamMap} from '@angular/router';
 import {of} from 'rxjs';
 import {ProductsComponent} from './products.component';
 import {ProductService} from "../../services/product.service";
+import {provideStore} from "@ngrx/store";
+import {cartReducer} from "../../store/cart.reducer";
 
 describe('ProductsComponent', () => {
   let component: ProductsComponent;
@@ -18,6 +20,7 @@ describe('ProductsComponent', () => {
         HttpClientModule
       ],
       providers: [
+        provideStore({ cart: cartReducer}),
         ProductService,
         {
           provide: ActivatedRoute,

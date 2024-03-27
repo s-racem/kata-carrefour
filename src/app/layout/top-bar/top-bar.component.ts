@@ -30,7 +30,7 @@ import {AsyncPipe, CurrencyPipe, NgForOf, NgIf, NgOptimizedImage} from "@angular
     AsyncPipe,
     MatSidenav,
     NgIf,
-    NgOptimizedImage
+    NgOptimizedImage,
   ],
   templateUrl: './top-bar.component.html',
   styleUrl: './top-bar.component.scss'
