@@ -1,27 +1,36 @@
 # KataCarrefour
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+# Architecture
+|-app<br />
+|&nbsp; &nbsp; &nbsp;|src<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-header component<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-components (contains the list of components of the app)<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-cart-item component<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-cart-page component<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-mini-cart component<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-product-card component<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-product-description component<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-products component<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-layout (contains the list of layouts of the app)<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-top-bar component<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-models (contains the interfaces)<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-cartProduct model<br />
+|&nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp;|-product model<br />
+|&nbsp; &nbsp; &nbsp;|-services (contains the services we use to communicate between components)<br />
+|&nbsp; &nbsp; &nbsp;|-store (NgRx concepts: action, reducer, state and selector)<br />
+|&nbsp; &nbsp; &nbsp;|-utils (contains the list of utils methods)<br />
+|-assets<br />
+&nbsp; &nbsp; &nbsp;|-carrefour-logo.svg<br />
+&nbsp; &nbsp; &nbsp;|-carrefour-logo-responsive.svg<br />
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# setup and run
+1- npm install<br />
+2- npm start<br />
+3- open http://localhost:4200<br />
 
-## Code scaffolding
+# List of features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+feature 1: fetch and display the list of products<br />
+feature 2: add products to the shopping cart and view the cart<br />
+feature 3: display detailsof product<br />
