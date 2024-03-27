@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute, RouterOutlet} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, RouterLink, RouterOutlet} from '@angular/router';
 import {MatCardModule} from '@angular/material/card'
 import {CommonModule} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {ProductService} from '../../services/product.service';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {Product} from '../../models/product.model';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatIconModule} from '@angular/material/icon';
@@ -13,23 +13,32 @@ import {MatSliderModule} from '@angular/material/slider';
 import {FormsModule} from '@angular/forms';
 import {MatDividerModule} from '@angular/material/divider';
 import {ProductCardComponent} from "../product-card/product-card.component";
+import {checkIfItemExistsInCart} from "../../utils/functions/check-if-item-exists-in-cart";
+import {CartProduct} from "../../models/cart-product.model";
+import {Store} from "@ngrx/store";
+import {CartState} from "../../store/cart.state";
+import {addQuantity, addToCart} from "../../store/cart.actions";
+import {selectCart} from "../../store/cart.selector";
 
 @Component({
   selector: 'app-products',
   standalone: true,
   imports: [CommonModule, RouterOutlet, MatCardModule, MatButtonModule, MatProgressSpinnerModule, MatIconModule,
-    MatRadioModule, MatSliderModule, FormsModule, MatDividerModule, ProductCardComponent],
+    MatRadioModule, MatSliderModule, FormsModule, MatDividerModule, ProductCardComponent, RouterLink],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
   title = 'Kata-Carrefour';
   productsSubscription: Subscription = new Subscription;
   products: Product[] = [];
   isLoading: boolean = true;
   nonFilteredProducts: Product[] = [];
+  cart$!: Observable<CartProduct[]>;
   constructor(private productsService: ProductService,
-              private readonly route: ActivatedRoute){
+              private readonly route: ActivatedRoute,
+              private store: Store<CartState>){
+    this.cart$ = this.store.select(selectCart);
   }
 
   ngOnInit(){
@@ -47,6 +56,23 @@ export class ProductsComponent {
         this.isLoading = false;
       }
     });
+  }
+
+  addProductToCart($event: number): void {
+    const product: Product[] = this.products.filter(
+      (product) => product.id === $event
+    );
+    if (checkIfItemExistsInCart($event, this.cart$)) {
+      this.addQuantity($event);
+    } else {
+      this.addToCart(product[0]);
+    }
+  }
+  addToCart(product: Product): void {
+    this.store.dispatch(addToCart({product}));
+  }
+  addQuantity(itemId: number): void {
+    this.store.dispatch(addQuantity({id: itemId}));
   }
   onDestroy(){
     this.productsSubscription.unsubscribe();

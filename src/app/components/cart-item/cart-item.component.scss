@@ -1,0 +1,116 @@
+@import '../../../styles.scss';
+.cart-item{
+  display: flex;
+  &-image{
+    img{
+      width: 100px;
+      min-width: 100px;
+      height: 100px;
+    }
+  }
+  &-information{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    &-header{
+      display: flex;
+      justify-content: space-between;
+      margin-left: 8px;
+      &-icon{
+        font-size: 20px;
+        color: #dc3545
+      }
+    }
+    &-body{
+      display: flex;
+      justify-content: space-between;
+      margin-left: 8px;
+      &-quantity{
+        &-numberStepper{
+          display: flex;
+          align-items: center;
+          border: 2px solid rgb(211, 212, 213);
+          button{
+            position: relative;
+            display: block;
+            appearance: none;
+            border: none;
+            text-align: center;
+            padding: 0px;
+            margin: 0px;
+            text-indent: -9999em;
+            background-color: rgb(255, 255, 255);
+            outline: none;
+            width: 30px;
+            height: 30px;
+            min-width: 30px;
+          }
+          &-decrement{
+            &:hover{
+              &::before{
+                background-color: #000
+              }
+            }
+            &::before{
+              height: 2px;
+              width: 10px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              content: "";
+              display: block;
+              background-color: rgb(211, 212, 213);
+              transition: background-color 250ms linear 0s;
+            }
+          }
+          &-increment{
+            &:hover{
+              &::before, &::after{
+                background-color: #000
+              }
+            }
+            &::before{
+              height: 2px;
+              width: 10px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              content: "";
+              display: block;
+              background-color: rgb(211, 212, 213);
+              transition: background-color 250ms linear 0s;
+            }
+            &::after{
+              height: 10px;
+              width: 2px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              content: "";
+              display: block;
+              background-color: rgb(211, 212, 213);
+              transition: background-color 250ms linear 0s;
+            }
+          }
+          &-quantity{
+            width: 30px;
+            font-weight: 600;
+            text-align: center;
+          }
+        }
+      }
+    }
+    &-billing-container{
+      margin-top: auto;
+      &-price, &-shipping{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+    }
+  }
+}

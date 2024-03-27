@@ -1,0 +1,69 @@
+<div class="top-nav">
+  <div class="top-nav__links">
+    <img ngSrc="assets/carrefour-logo.svg" alt="" height="60" width="200" [routerLink]="['/products']"/>
+  </div>
+  <h1 class="top-nav__header">Angular Shopping Cart</h1>
+  <div class="top-nav__cart">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon
+        matBadge="{{ cartLength }}"
+        matBadgePosition="after"
+        matBadgeColor="accent"
+        [matBadgeHidden]="cartLength === 0"
+      >shopping_cart</mat-icon
+      >
+    </button>
+  </div>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" closed>
+      <h3>
+        <span>
+          Your added products:
+          <span *ngIf="cartLength > 0">{{ cartLength }}</span>
+        </span>
+        <span *ngIf="cartLength === 0"> Nothing yet</span>
+        <button
+          mat-raised-button
+          *ngIf="cartLength"
+          routerLink="/cart"
+          routerLinkActive="router-link-active"
+        >
+          See full cart
+        </button>      </h3>
+      <app-mini-cart
+        *ngFor="let item of cart$ | async"
+        [title]="item.title"
+        [price]="item.price"
+        [id]="item.id"
+        [quantity]="item.quantity"
+        (reduceQuantityInCart)="reduceQuantity($event)"
+        (deleteFromCart)="removeFromCart($event)"
+        (increaseQuantityInCart)="increaseQuantity($event)"
+        [image]="item.image"
+      ></app-mini-cart>
+      <div class="footer">
+        <div class="footer__total">
+          <span>Your total:</span>
+          <span>{{ total$ | async | currency }}</span>
+        </div>
+        <div class="footer__button-group">
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="cartLength === 0"
+            (click)="clearCart()"
+          >
+            Clear cart
+          </button>
+          <button
+            mat-raised-button
+            color="accent"
+            [disabled]="cartLength === 0"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>
